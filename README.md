@@ -13,6 +13,8 @@ The AutoPkg run has all actions logged to `~/Library/Logs`, with the logfiles be
 
 If the optional `slack_post_processor`, `slack_autopkg_processor` and `slack_webhook` variables are correctly populated, AutoPkg recipes for Jamf Upload or JSSImporter should have output sent to the Slack webhook specified in the `slack_webhook` variable.
 
+My (jby) version will strip out all info about repo updating and recipe running from output before sending to Slack webhook
+
 Jamf Upload new package message:
 
 ![](readme_images/AutoPkg_JamfUpload_new_package_message.png)
