@@ -248,8 +248,12 @@ if [[ -x /usr/local/bin/autopkg ]] && [[ -r "$recipe_list" ]]; then
        # configured but we do have a Slack webhook set up, all
        # standard output should be sent to Slack.
 
+       # Cut out lines from log to send to Slack
+
+       /usr/bin/awk '/The following/,/Finished AutoPkg run/' /tmp/autopkg.out > /tmp/to_slack.txt
+
        ScriptLogging "Sending AutoPkg output log to Slack"
-       SendToSlack /tmp/autopkg.out ${slack_webhook}
+       SendToSlack /tmp/to_slack.txt ${slack_webhook}
        ScriptLogging "Sent AutoPkg output log to $slack_webhook."
 
     fi
